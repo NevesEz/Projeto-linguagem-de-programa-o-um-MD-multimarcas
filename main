@@ -1,0 +1,29 @@
+package com.loja.roupas;
+
+
+import com.loja.roupas.controller.ClienteController;
+import com.loja.roupas.controller.VendaController;
+import com.loja.roupas.model.*;
+
+
+public class LojaApplication {
+  public static void main(String[] args) {
+
+    ClienteController clienteController = new ClienteController();
+    VendaController vendaController = new VendaController();
+
+
+    Cliente c1 = new Cliente(1L, "Marcos", "123.456.789-10", "9999-9999");
+    Produto p1 = new Produto(1L, "Camiseta Azul", 59.90, 10);
+
+
+    clienteController.cadastrarCliente(c1);
+
+
+    Venda venda = new Venda(1L, c1, p1, 2);
+    vendaController.registrarVenda(venda);
+
+
+    System.out.println("Total vendido: R$ " + vendaController.exibirTotalDeVendas());
+  }
+}
